@@ -7,12 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    
-      Nombre <input type="text" id="Nombre"> 
-      Gasto <input type= "number" id="Gasto">
-      <button  onclick= "agregarPersona()"  id="boton">enviar</button>
-      <button onclick="eliminarPersona()" id="delete">borrar</button>
-      <div id="contenido"></div>
+    <div>
+        Nombre <input type="text" id="nombre"> 
+        Gasto <input type= "number" id="gasto">
+        <button  onclick= "agregarPersona()"  id="boton">enviar</button>
+        <button onclick="eliminarPersona()" id="delete">borrar a una persona</button>
+        <button onclick="eliminarTodo()" id="delete">borrar a todos</button>
+    </div>
+    <div id="contenido"></div>
+    <div id="resultado"></div>
     
     
     <script src="./template/main.js"></script>
