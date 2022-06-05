@@ -9,20 +9,31 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="card" style="width: 25rem;">
-        <div class="card-body">
-          <h5 class="card-title">App de Gastos</h5>
-          <p class="card-text">Ingresa monto y nombre de la persona.</p>    
-           Nombre <input type="text" id="nombre"> 
-           Gasto <input type= "number" id="gasto"> 
-          <button  onclick= "agregarPersona()"  id="boton">enviar</button>
-          <button onclick="eliminarPersona()" id="delete">borrar a una persona</button>
-          <button onclick="eliminarTodo()" id="delete">borrar a todos</button>
+    <div class="d-flex align-items-center justify-content-center">
+    <div class="card w-50 ">
+        <div class="card-body p-0">
+            <div class="bg-primary text-white p-2">
+                <h5 class="card-title">App de Gastos</h5>
+                <p class="card-text">Ingresa monto y nombre de la persona.</p>   
+            </div>
+            <div class=" d-block container p-2">
+                <div class="m-2">
+                    Nombre <input type="text" id="nombre">
+                </div>           
+                 <div class="m-2">
+                Gasto <input class="mx-3" type= "number" id="gasto">    
+                 </div>
+                <button  class="btn bg-secondary text-white" onclick= "agregarPersona()"  id="boton">enviar</button>
+                <button class="btn bg-secondary text-white" onclick="eliminarPersona()" id="delete">borrar a una persona</button>
+                <button class="btn bg-secondary text-white" onclick="eliminarTodo()" id="delete">borrar a todos</button>
+
+            </div>
+
           <div id="contenido"></div>
           <div id="resultado"></div>
         </div>
       </div>
- 
+ </div>
     
     <script src="./template/main.js"></script>
 </body>

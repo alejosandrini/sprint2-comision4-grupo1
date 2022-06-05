@@ -55,10 +55,23 @@ function agregarPersona(){
     let nombre = document.getElementById('nombre').value;
     let gasto = document.getElementById('gasto').value;
 
+    console.log(nombre)
+    console.log(gasto)
+
+    if(nombre == "" && gasto == ""){
+        alert("Falta rellenar campos")
+    }
+
+    else{
+
     agregarValores(nombre, gasto);
 
     imprimirArrays();
     imprimirResultados();
+
+
+    }
+
     
 }
 
