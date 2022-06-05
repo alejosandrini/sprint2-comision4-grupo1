@@ -13,20 +13,16 @@
         <div class="card-body">
           <h5 class="card-title">App de Gastos</h5>
           <p class="card-text">Ingresa monto y nombre de la persona.</p>    
-           Nombre <input type="text" id="Nombre"> 
-           Gasto <input type= "number" id="Gasto"> 
-           <div id="contenido"></div>
-          <a href="#" class="btn btn-primary">
-            <button  onclick= "agregarPersona()"  id="boton">enviar</button>
-          </a>
-          <a href="#" class="btn btn-primary">
-              <button onclick="eliminarPersona()" id="delete">borrar</button>
-          </a>
+           Nombre <input type="text" id="nombre"> 
+           Gasto <input type= "number" id="gasto"> 
+          <button  onclick= "agregarPersona()"  id="boton">enviar</button>
+          <button onclick="eliminarPersona()" id="delete">borrar a una persona</button>
+          <button onclick="eliminarTodo()" id="delete">borrar a todos</button>
+          <div id="contenido"></div>
+          <div id="resultado"></div>
         </div>
       </div>
  
-  
-    
     
     <script src="./template/main.js"></script>
 </body>
