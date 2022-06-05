@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
+    <div class="d-flex align-items-center justify-content-center">
+    <div class="card w-50 ">
+        <div class="card-body p-0">
+            <div class="bg-primary text-white p-2">
+                <h5 class="card-title">App de Gastos</h5>
+                <p class="card-text">Ingresa monto y nombre de la persona.</p>   
+            </div>
+            <div class=" d-block container p-2">
+                <div class="m-2">
+                    Nombre <input type="text" id="nombre">
+                </div>           
+                 <div class="m-2">
+                Gasto <input class="mx-3" type= "number" id="gasto">    
+                 </div>
+                <button  class="btn bg-secondary text-white" onclick= "agregarPersona()"  id="boton">enviar</button>
+                <button class="btn bg-secondary text-white" onclick="eliminarPersona()" id="delete">borrar a una persona</button>
+                <button class="btn bg-secondary text-white" onclick="eliminarTodo()" id="delete">borrar a todos</button>
+
+            </div>
+
+          <div id="contenido"></div>
+          <div id="resultado"></div>
+        </div>
+      </div>
+ </div>
     
     <script src="./template/main.js"></script>
 </body>
