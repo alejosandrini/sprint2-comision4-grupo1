@@ -27,8 +27,10 @@ function imprimirArrays(){
         contenido.removeChild(contenido.firstChild);
     }
     for (let i in nombres) {
-        nuevaPersona = document.createElement('p');
+        nuevaPersona = document.createElement('li');
         nuevaPersona.innerHTML = `${nombres[i]}: $${gastos[i]}`;
+        nuevaPersona.classList.add('list-group-item');
+        nuevaPersona.classList.add('list-group-item-dark');
         contenido.appendChild(nuevaPersona);
     }
 }
@@ -39,7 +41,7 @@ function imprimirResultados(){
         resultado.removeChild(resultado.firstChild);
     }
     let total = document.createElement('p');
-    total.innerHTML = `Total: ${gastosTotales}`;
+    total.innerHTML = `Total: $${gastosTotales}`;
     resultado.appendChild(total);
 
     let aporte=0;
@@ -47,7 +49,7 @@ function imprimirResultados(){
         aporte = parseInt(gastosTotales)/parseInt(nombres.length);
     }
     let aportes = document.createElement('p');
-    aportes.innerHTML = `A cada uno le toca aportar: ${aporte}`;
+    aportes.innerHTML = `A cada uno le toca aportar: $${aporte}`;
     resultado.appendChild(aportes);
 }
 
@@ -58,37 +60,34 @@ function agregarPersona(){
     console.log(nombre)
     console.log(gasto)
 
-    if(nombre == "" && gasto == ""){
+    if(nombre == "" || gasto == ""){
         alert("Falta rellenar campos")
-    }
+    }else{
+        agregarValores(nombre, gasto);
 
-    else{
-
-    agregarValores(nombre, gasto);
-
-    imprimirArrays();
-    imprimirResultados();
-
-
-    }
-
-    
+        imprimirArrays();
+        imprimirResultados();
+    } 
 }
 
 function eliminarPersona(){
     let contenido = document.getElementById('contenido');
     let nombre = document.getElementById('nombre').value;
-    for(let i in nombres){
-        if(nombre == nombres[i]){
-            console.log('Borre a: '+nombres[i]);
-            gastosTotales = parseInt(gastosTotales) - parseInt(gastos[i]);
-            nombres.splice(i,1);
-            gastos.splice(i,1);
-            contenido.removeChild(contenido.children[i]);
+    if(nombre == ""){
+        alert("Falta rellenar campo nombre")
+    }else{
+        for(let i in nombres){
+            if(nombre == nombres[i]){
+                console.log('Borre a: '+nombres[i]);
+                gastosTotales = parseInt(gastosTotales) - parseInt(gastos[i]);
+                nombres.splice(i,1);
+                gastos.splice(i,1);
+                contenido.removeChild(contenido.children[i]);
+            }
         }
+        console.log(nombres);
+        imprimirResultados();
     }
-    console.log(nombres);
-    imprimirResultados();
 }
 
 function eliminarTodo(){
