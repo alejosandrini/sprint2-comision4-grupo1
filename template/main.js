@@ -2,6 +2,13 @@ let nombres= [];
 let gastos = [];
 let gastosTotales = 0;
 
+/**
+ * Agregar un bool para saber si es pago en efectivo o no
+ * y la fecha que se realizo la transaccion
+ */
+ let transacciones = [];
+
+
 function agregarValores(nuevoNombre, gasto){
     let existeNombre = false;
     for(let i in nombres){
@@ -35,6 +42,21 @@ function imprimirArrays(){
     }
 }
 
+function imprimirTransacciones(){
+    let contenido = document.getElementById('contenido');
+    let nuevaPersona;
+    while (contenido.hasChildNodes()) {
+        contenido.removeChild(contenido.firstChild);
+    }
+    for (let transaccion of transacciones) {
+        nuevaPersona = document.createElement('li');
+        nuevaPersona.innerHTML = `${transaccion.nombre}: $${transaccion.gasto}`;
+        nuevaPersona.classList.add('list-group-item');
+        nuevaPersona.classList.add('list-group-item-dark');
+        contenido.appendChild(nuevaPersona);
+    }
+}
+
 function imprimirResultados(){
     let resultado = document.getElementById('resultado');
     while (resultado.hasChildNodes()) {
@@ -53,6 +75,24 @@ function imprimirResultados(){
     resultado.appendChild(aportes);
 }
 
+function imprimirResultadosTransacciones(){
+    let resultado = document.getElementById('resultado');
+    while (resultado.hasChildNodes()) {
+        resultado.removeChild(resultado.firstChild);
+    }
+    let total = document.createElement('p');
+    total.innerHTML = `Total: $${gastosTotales}`;
+    resultado.appendChild(total);
+
+    let aporte=0;
+    if(transacciones.length>0){
+        aporte = parseInt(gastosTotales)/parseInt(transacciones.length);
+    }
+    let aportes = document.createElement('p');
+    aportes.innerHTML = `A cada uno le toca aportar: $${aporte}`;
+    resultado.appendChild(aportes);
+}
+
 function agregarPersona(){
     let nombre = document.getElementById('nombre').value;
     let gasto = document.getElementById('gasto').value;
@@ -63,10 +103,28 @@ function agregarPersona(){
     if(nombre == "" || gasto == ""){
         alert("Falta rellenar campos")
     }else{
-        agregarValores(nombre, gasto);
+        //agregarValores(nombre, gasto);
+        let nombre = document.getElementById('nombre').value;
+        let gasto = document.getElementById('gasto').value;
+        let esEfectivo = document.getElementById('efectivo').checked;
+        
+        let transaccion = {
+            nombre,
+            gasto,
+            esEfectivo,
+            fecha: new Date().toLocaleDateString()
+        };
+        console.log("Transaccion:");
+        console.log(transaccion);
+        transacciones.push(transaccion);
+        gastosTotales = parseInt(gastosTotales) + parseInt(gasto);
 
-        imprimirArrays();
-        imprimirResultados();
+        //imprimirArrays();
+        imprimirTransacciones();
+        //imprimirResultados();
+        imprimirResultadosTransacciones();
+        console.log("Transacciones:");
+        console.log(transacciones);
     } 
 }
 
@@ -102,3 +160,7 @@ function eliminarTodo(){
     console.log(gastos);
     imprimirResultados();
 }
+
+
+
+ 
